@@ -1,9 +1,17 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "id": "37e5",
+      "title": "igor"
+    },
+    {
+      "id": "7c89",
+      "title": "teste"
     }
   ]
 }
