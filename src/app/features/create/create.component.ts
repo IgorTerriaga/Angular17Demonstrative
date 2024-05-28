@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { ProductsService } from '../../shared/services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -16,6 +17,7 @@ import { ProductsService } from '../../shared/services/products.service';
 export class CreateComponent {
   productService = inject(ProductsService);
   toastService = inject(ToastrService);
+  router = inject(Router);
 
   form = new FormGroup({
     title: new FormControl('', { nonNullable: true, validators: Validators.required })
@@ -25,7 +27,7 @@ export class CreateComponent {
     const payload = { title: this.form.controls['title'].value };
     this.productService.createProduct(payload).subscribe(() => {
       this.toastService.success('Deu certo');
-    })
+    }).add(() => this.router.navigateByUrl('/'))
 
   }
 
